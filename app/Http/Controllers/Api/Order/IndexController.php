@@ -60,15 +60,19 @@ class IndexController extends Controller
                     'remark' => $remark,
                 ]);
                 //加订单的属性
-                $attributes = json_decode($request->goodsmsg,1);
-                $attrs = [];
-                foreach ($attributes as $k=>$attribute) {
-                    $attrs[$k] = $attribute['dist_id'];
+                $atr = $request->goodsmsg;
+                if($atr && count(json_encode($atr))){
+                    $attributes = json_decode($request->goodsmsg,1);
+                    $attrs = [];
+                    foreach ($attributes as $k=>$attribute) {
+                        $attrs[$k] = $attribute['dist_id'];
+                    }
+                    $attributes = Order::goodsAttribute($attrs);
+                    $aorder = Order::find($order->id);
+                    $aorder->attributes = $attributes;
+                    $aorder->save();
                 }
-                $attributes = Order::goodsAttribute($attrs);
-                $aorder = Order::find($order->id);
-                $aorder->attributes = $attributes;
-                $aorder->save();
+
 
                 // 增加已出售
                 $goodsInfo->sale_quantity = $goodsInfo->sale_quantity + $quantity;

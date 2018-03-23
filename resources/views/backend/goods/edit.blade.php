@@ -149,10 +149,15 @@
                                 </div>
                             @endif
                         </div>
-                        <div class="row">
-                            <div class="col-sm-12 col-xl-12 m-b-30">
-                                <h4 class="sub-title">赠送话费</h4>
-                                <input type="text" class="form-control" name="telephone_fare" value="{{ $goods->telephone_fare or '' }}">
+                        <div class="layui-form-item">
+                            <div class="layui-form-item" pane="">
+                                <span class="sub-title">可否成为推广员{{ $goods->telephone_fare}}</span>
+                                <div class="layui-input-block">
+                                    <span>不可以</span>
+                                    <input type="radio" name="telephone_fare" value="0" title="不可以"  {{ $goods->telephone_fare >= 1? '':'checked' }}>
+                                    <span>可以</span>
+                                    <input type="radio" name="telephone_fare" value="1" title="可以"  {{ $goods->telephone_fare >= 1? 'checked':'' }}>
+                                </div>
                             </div>
                         </div>
                         <div class="row">

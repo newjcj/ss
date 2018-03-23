@@ -33,6 +33,7 @@ Route::prefix('user')->namespace('User')->group(function () {
     Route::post('idcard-upload', 'IndexController@idcardUpload');
     Route::post('idcard-check', 'IndexController@idcardCheck');
     Route::any('recharge', 'IndexController@recharge');
+    Route::get('chars', 'IndexController@chars');
 
 
     Route::prefix('message')->group(function () {

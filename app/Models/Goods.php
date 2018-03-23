@@ -31,11 +31,12 @@ class Goods extends Model
     ];
     public function getStatusAttribute($value){
         if($value == 1){
-            return '<span style="color:red">没生效</span>';
+            return '<span style="color:green">已上架</span>';
         }else{
-            return '生效';
+            return '<span style="color:red">已下架</span>';
         }
     }
+
     public function getImagesAttribute($value)
     {
         return array_filter(explode(',',$value));

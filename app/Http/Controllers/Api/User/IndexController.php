@@ -805,4 +805,10 @@ class IndexController extends Controller
             return response()->json(responseFormat(-1, '未绑定'));
         }
     }
+
+    public function chars(Request $request)
+    {
+        print_r(3);exit;
+        return view('backend.user.chars');
+    }
 }

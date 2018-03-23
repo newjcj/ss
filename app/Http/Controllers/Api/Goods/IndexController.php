@@ -60,13 +60,13 @@ class IndexController extends Controller
     //取一级分类列表
     public function categoryOne(Request $request)
     {
-        $categorys = Category::where('pid',1)->get();
+        $categorys = Category::where('pid',1)->whereNotIn('name',['飕飕商城'])->get();
         r(1,'','',$categorys);
     }
     //取一级分类下的所有二级分类和商品
     public function categoryTwo(Request $request)
     {
-        $categorys = Category::where('pid',$request->input('id'))->get();
+        $categorys = Category::where('pid',$request->input('id'))->whereNotIn('name',['飕飕商城'])->get();
         $re=[];
         foreach ($categorys as $k=>$category) {
             $re[$k]['category']=Category::find($category->id);
@@ -82,7 +82,7 @@ class IndexController extends Controller
         $start = rand(1,$count-10);
         $re=[];
         $ure = function () use ($start) {
-            $dataone =DB::select('select * from goods limit ?, 10',[$start]);
+            $dataone =DB::select('select * from goods where vocational != NULL limit ?, 10',[$start]);
             array_walk($dataone,function($v){
                 $v->images = explode(',',$v->images);
             });

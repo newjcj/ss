@@ -8,6 +8,22 @@ use Illuminate\Support\Debug\Dumper;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Support\HigherOrderTapProxy;
 
+//jcj添加
+if (! function_exists('r')) {
+    /**
+     * Assign high numeric IDs to a config item to force appending.
+     *
+     * @param  array  $array
+     * @return array
+     */
+    function r($status,$message,$returnurl="",$data='',$end=true)
+    {
+
+        $m3=new \App\Entity\M3result();
+        echo($m3->build($status,$message,$returnurl,$data,$end=true));exit;
+        return;
+    }
+}
 if (! function_exists('append_config')) {
     /**
      * Assign high numeric IDs to a config item to force appending.

@@ -103,9 +103,9 @@
                                     <span class="sub-title">是否用老的积分机制</span>
                                     <div class="layui-input-block">
                                         <span>是</span>
-                                        <input type="radio" name="vocational" value="" title="是" onclick="showIntegral('')" checked>
+                                        <input type="radio" name="vocational" value="" title="是" onclick="showIntegral('')" {{ $goods->vocational ==1? '' : 'checked' }}>
                                         <span>不是</span>
-                                        <input type="radio" name="vocational" value="1" title="不是" onclick="showIntegral(1)" >
+                                        <input type="radio" name="vocational" value="1" title="不是" onclick="showIntegral(1)" {{ $goods->vocational ==1? 'checked' : '' }}>
                                     </div>
                                 </div>
                             </div>

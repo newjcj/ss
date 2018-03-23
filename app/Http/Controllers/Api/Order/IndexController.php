@@ -61,7 +61,7 @@ class IndexController extends Controller
                 ]);
                 //加订单的属性
                 $atr = $request->goodsmsg;
-                if($atr && count(json_encode($atr))){
+                if($atr && count(json_decode($atr,1))){
                     $attributes = json_decode($request->goodsmsg,1);
                     $attrs = [];
                     foreach ($attributes as $k=>$attribute) {
@@ -77,7 +77,6 @@ class IndexController extends Controller
                 // 增加已出售
                 $goodsInfo->sale_quantity = $goodsInfo->sale_quantity + $quantity;
                 $goodsInfo->save();
-
                 return response()->json(responseFormat(1, 'success', [
                     'amount' => $amount,
                     'balance' => 100000,

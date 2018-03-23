@@ -59,13 +59,12 @@ class GoodsController extends Controller
             'category'=>new Category(),
         ]);
     }
-    
+
     /**
      * @param Request $request
      */
     public function update(Request $request)
     {
-//        print_r($request->images);exit;
         $ab=$request->input('attributedata');
         Goods::where('id', $request->id)->update([
             'title' => $request->title,

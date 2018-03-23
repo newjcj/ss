@@ -762,6 +762,28 @@ class IndexController extends Controller
         $path = public_path()."/../storage/app/public/idcard/";
         //生成图片文件
         file_put_contents($path.$name.".jpg",base64_decode($stream));
+        $this->water($name.".jpg");
+    }
+
+    public function water($file){
+        $file = "/data/wwwroot/s.38sd.com/storage/app/public/idcard/".$file;
+        if(!file_exists($file)){
+            return;
+        }
+        $water_file = "/data/wwwroot/s.38sd.com/public/shui.png";
+        $water = imagecreatefrompng($water_file);
+        imagealphablending($water, false);
+        imagesavealpha($water, true);
+        $img = imagecreatefromjpeg($file);
+        $img_w = imagesx($img)*0.3;
+        $img_h = imagesy($img)*0.3;
+        $water_w = imagesx($water);
+        $water_h = imagesy($water);
+        imagecopy($img, $water, $img_w, $img_h, 0, 0, $water_w, $water_h);
+        imagejpeg($img, $file, 100);
+        imagedestroy($img);
+        imagedestroy($water);
+        return;
     }
 
     /**

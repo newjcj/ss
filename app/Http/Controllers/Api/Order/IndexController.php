@@ -138,17 +138,15 @@ class IndexController extends Controller
                 }
             ])
             ->paginate(50);
-
         foreach ($orderList as $key => $value) {
             if($value["status"] == 1 && ((time()-strtotime($value["created_at"])) > 48*60*60) ){
                 unset($orderList[$key]);
             }
         }
-        Log::info('111111111111111111111');
-        Log::info($orderList);
-        Log::info('111111111111111111111');
 
-        return response()->json(responseFormat(1, 'success', $orderList));
+        r(1,'','',$orderList);
+
+//        return response()->json(responseFormat(1, 'success', $orderList));
     }
 
     /**

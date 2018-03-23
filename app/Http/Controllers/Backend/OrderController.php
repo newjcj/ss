@@ -57,6 +57,7 @@ class OrderController extends Controller
             $temp["no"] = "单号".$item["no"];
             $temp["phone"] = $item->user->phone ?? '';
             $temp["goods_title"] = $item->goods_title;
+            $temp["attributes"] = $item->attributes;
             $temp["amount"] = $item->amount;
             $temp["created_at"] = $item->created_at;
             $temp["status"] = config('order.status')[$item->status] ?? '';
@@ -69,7 +70,6 @@ class OrderController extends Controller
             $temp["receiving_name"] = $item->receiving_name ? $item->receiving_name : "";
             $temp["receiving_phone"] = $item->receiving_phone ? $item->receiving_phone : "";
             $temp["receiving_address"] = $item->receiving_address ? $item->receiving_address : "";
-            $temp["remark"] = $item->remark ? $item->remark : "";
             $data[] = $temp;
         }
         $table = '';
@@ -79,6 +79,7 @@ class OrderController extends Controller
                     <th>订单号</th>
                     <th>用户</th>
                     <th>商品</th>
+                    <th>商品属性</th>
                     <th>订单金额</th>
                     <th>订单时间</th>
                     <th>订单状态</th>
@@ -91,7 +92,6 @@ class OrderController extends Controller
                     <th>收货人姓名</th>
                     <th>收货人手机</th>
                     <th>收货人地址</th>
-                    <th>留言</th>
                 </tr>
             </thead>
             <tbody>";
@@ -100,6 +100,7 @@ class OrderController extends Controller
             <td>".$item["no"]."</td>
             <td>".$item["phone"]."</td>
             <td>".$item["goods_title"]."</td>
+            <td>".$item["attributes"]."</td>
             <td>".$item["amount"]."</td>
             <td>".$item["created_at"]."</td>
             <td>".$item["status"]."</td>
@@ -112,7 +113,6 @@ class OrderController extends Controller
             <td>".$item["receiving_name"]."</td>
             <td>".$item["receiving_phone"]."</td>
             <td>".$item["receiving_address"]."</td>
-            <td>".$item["remark"]."</td>
             </tr>";
         }
         $table .= "</tbody></table>";

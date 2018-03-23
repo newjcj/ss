@@ -59,6 +59,7 @@ class GoodsController extends Controller
             'category'=>new Category(),
         ]);
     }
+    
     /**
      * @param Request $request
      */

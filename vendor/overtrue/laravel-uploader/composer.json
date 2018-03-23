@@ -1,0 +1,25 @@
+{
+    "name": "overtrue/laravel-uploader",
+    "authors": [
+        {
+            "name": "overtrue",
+            "email": "i@overtrue.me"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "Overtrue\\LaravelUploader\\": "src/LaravelUploader"
+        },
+        "files": ["src/LaravelUploader/helpers.php"]
+    },
+    "extra": {
+        "laravel": {
+            "providers": ["\\Overtrue\\LaravelUploader\\UploadServiceProvider"]
+        }
+    },
+    "license": "MIT"
+}

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Log;
 
 class Order extends Model
 {
@@ -20,6 +21,7 @@ class Order extends Model
         'receiving_address',
         'receiving_phone',
         'receiving_name',
+        'attributes',
     ];
 
     /**
@@ -58,5 +60,16 @@ class Order extends Model
     public function goods()
     {
         return $this->belongsTo(Goods::class, 'goods_id', 'id');
+    }
+    //取商品属性
+    public static function goodsAttribute($ids)
+    {
+        $re='';
+        foreach ($ids as $k=>$id) {
+            $re.=Attributelist::find($id)->attribute->name.":".Attributelist::find($id)->name.',';
+//            $re[$k]['attribute']=Attributelist::find($id)->attribute->name;
+//            $re[$k]['attributelist']=Attributelist::find($id)->name;
+        }
+        return trim($re,',');
     }
 }

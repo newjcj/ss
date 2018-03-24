@@ -10,7 +10,7 @@ Route::namespace('Auth')->group(function () {
 // 数据面板
 Route::get('dashboard',  'DashboardController@index')->name('admin.dashboard');
 
-Route::group(['middleware' => ['auth:admin']], function () {
+Route::group(['middleware' => ['auth:admin','check.login']], function () {
 
     // 用户
     Route::prefix('user')->group(function () {

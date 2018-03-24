@@ -12,9 +12,12 @@
 */
 
 Route::get('/', function () {
-	return view("welcome");
+//    print_r(33);exit;
+    return redirect('/admin/login');
+//	return view("welcome");
 });
 Route::get('/jcj', 'TestController@jcj');
+Route::get('/test', 'TestController@test');
 
 Route::get('register/{qr}', 'HomeController@register')->name('register');;
 Route::post('register/{qr}', 'HomeController@doRegister')->name('register');

@@ -20,7 +20,7 @@ class Rebate
      */
     public function promotionSpecialist($buyUserId, $orderNo, $goodsId, $quantity)
     {
-        if( Goods::find($goodsId)->vocational == ''){
+        if( Goods::find($goodsId)->vocational == '' ){
             return true;
         }
         DB::beginTransaction();
